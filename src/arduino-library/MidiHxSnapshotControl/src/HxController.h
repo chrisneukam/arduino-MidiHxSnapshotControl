@@ -22,8 +22,26 @@
 #ifndef __MIDIHXSNAPSHOTCONTROL_HX_CONTROLLER_H__
 #define __MIDIHXSNAPSHOTCONTROL_HX_CONTROLLER_H__
 
-namespace midihxsnapshotcontrol::controller {
+#include <stdint.h>
 
-class HxController {};
+namespace midihxsnapshotcontrol {
+class ISerialReader;
+class ISerialWriter;
+}  // namespace midihxsnapshotcontrol
+
+namespace midihxsnapshotcontrol::controller {
+using midihxsnapshotcontrol::ISerialReader;
+using midihxsnapshotcontrol::ISerialWriter;
+
+class HxController {
+ public:
+  HxController(const uint8_t channel, ISerialReader& reader, ISerialWriter& writer);
+
+  virtual ~HxController() = default;
+
+  void listen();
+
+ private:
+};
 }  // namespace midihxsnapshotcontrol::controller
 #endif

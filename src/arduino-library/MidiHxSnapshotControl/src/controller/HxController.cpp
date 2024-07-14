@@ -19,3 +19,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include "HxController.h"
+
+#include "ISerialReader.h"
+#include "ISerialWriter.h"
+
+namespace midihxsnapshotcontrol::controller {
+HxController::HxController([[maybe_unused]] const uint8_t channel,
+                           [[maybe_unused]] ISerialReader& reader,
+                           [[maybe_unused]] ISerialWriter& writer) {}
+
+void HxController::listen() {}
+}  // namespace midihxsnapshotcontrol::controller
