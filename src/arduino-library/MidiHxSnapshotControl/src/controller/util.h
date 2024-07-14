@@ -6,6 +6,8 @@
  * @date 2024-07-14
  *
  * @copyright Copyright 2024 Christian Neukam. All rights reserved.
+ * @note Code copied from
+ * https://github.com/chrisneukam/MidiDmxBridge/blob/main/src/midi_dmx/util.h .
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
