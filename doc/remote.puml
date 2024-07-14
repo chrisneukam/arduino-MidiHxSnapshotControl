@@ -1,0 +1,31 @@
+@startuml ABD
+
+autoactivate on
+
+box peripherials
+participant "MIDI master" as midi
+participant "HX Stomp" as hx
+end box
+
+box MIDI HX snapshot control #LightSkyBlue
+participant "controller" as c
+participant "remote" as r
+participant "LED panel" as led
+end box
+
+== Receive MIDI CC comand ==
+midi -> c: receiveMidi(statusByte, dataBytes[])
+c -> hx: sendMidi(statusByte, dataBytes[])
+return
+alt statusByte >= 0xB0 && statusByte <= 0xBF
+alt dataByte[0] == 69 && dataByte[1] < 3
+c -> r: changeSnapshot(dataByte[1])
+r -> led: activateLed(dataByte[1])
+return
+r -> led: deactivateLed
+return
+end
+end
+return
+
+@enduml

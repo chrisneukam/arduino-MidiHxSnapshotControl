@@ -1,0 +1,39 @@
+@startuml MidiHxSnapshotControl Class Diagram
+
+interface ISerialReader
+interface ISerialWriter
+interface IUartReceiver
+interface IUartTransmitter
+
+package Controller {
+  interface ISignalComposer
+  class HxController
+  class UartReceiver
+  class UartTransmitter
+  class MidiComposer
+  class UartComposer
+
+  HxController o-- ISerialReader
+  MidiComposer o-- ISerialWriter
+  HxController *-- UartReceiver
+  UartComposer *-- UartTransmitter
+  HxController *-- MidiComposer
+  HxController *-- UartComposer
+  UartReceiver --|> IUartReceiver
+  UartTransmitter --|> IUartTransmitter
+  MidiComposer --|> ISignalComposer
+  UartComposer --|> ISignalComposer
+}
+
+package Remote {
+  class HxRemote
+  class UartReceiver
+  class UartTransmitter
+  class InputManager
+
+  HxRemote *-- UartReceiver
+  HxRemote *-- UartTransmitter
+  HxRemote *-- InputManager
+  UartReceiver --|> IUartReceiver
+  UartTransmitter --|> IUartTransmitter
+}
